@@ -74,8 +74,60 @@ img {
 	align-items: center;
 }
 
-@media (min-width: 992px){
-    .game-container{
-        padding-top: 20px;
-    }
+.move-controls {
+	min-height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+
+	.move-controls-container {
+		position: relative;
+		min-width: 300px;
+		min-height: 220px;
+	}
+
+	.fa-solid {
+		font-size: 60px;
+		padding: 4px;
+		color: white;
+		text-shadow: 0 0 10px black;
+	}
+
+	button {
+		background-color: rgb(28, 28, 28);
+		position: relative;
+	}
+
+	.btn-up {
+		left: 50%;
+		transform: translate(-50%);
+		width: 65px;
+	}
+
+	.btn-left {
+		top: 72px;
+		left: -16px;
+	}
+
+	.btn-right {
+		top: 72px;
+		left: 45px;
+	}
+
+	.btn-down {
+		top: 145px;
+		width: 65px;
+		left: -30%;
+	}
+}
+
+@media (min-width: 992px) {
+	.game-container {
+		padding-top: 20px;
+	}
+
+	.move-controls {
+		display: none;
+	}
 }
