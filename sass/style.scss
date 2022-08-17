@@ -17,7 +17,9 @@ body {
 	--score: 1;
 
 	font-family: 'Roboto', sans-serif;
-    background-color: rgb(9, 9, 9);
+	background-image: url('../img/snake.jpg');
+	background-size: cover;
+	background-position: center;
 }
 
 .world {
@@ -49,7 +51,7 @@ body {
 .scoreBoard {
 	position: absolute;
 	color: white;
-    font-family: 'Staatliches', cursive;
+	font-family: 'Staatliches', cursive;
 	font-weight: bold;
 	letter-spacing: 3px;
 	font-size: 4vmin;
@@ -62,4 +64,70 @@ img {
     left: calc(-1 * var(--mapBorderWidth)); */
 	width: 100%;
 	height: 100%;
+}
+
+.game-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.move-controls {
+	min-height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+
+	.move-controls-container {
+		position: relative;
+		min-width: 300px;
+		min-height: 220px;
+	}
+
+	.fa-solid {
+		font-size: 60px;
+		padding: 4px;
+		color: white;
+		text-shadow: 0 0 10px black;
+	}
+
+	button {
+		background-color: rgb(28, 28, 28);
+		position: relative;
+	}
+
+	.btn-up {
+		left: 50%;
+		transform: translate(-50%);
+		width: 65px;
+	}
+
+	.btn-left {
+		top: 72px;
+		left: -16px;
+	}
+
+	.btn-right {
+		top: 72px;
+		left: 45px;
+	}
+
+	.btn-down {
+		top: 145px;
+		width: 65px;
+		left: -30%;
+	}
+}
+
+@media (min-width: 992px) {
+	.game-container {
+		padding-top: 20px;
+	}
+
+	.move-controls {
+		display: none;
+	}
 }
