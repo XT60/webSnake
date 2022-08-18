@@ -1,16 +1,15 @@
 'use strict'
 const gameBoard = document.querySelector(".gameBoard");
-const mapCellCount = 
-    parseInt(getComputedStyle(document.querySelector('body')).getPropertyValue('--mapCellCount'))
-
-
-
-
-let previousMovement = [0, 0]
-let movement = [0, 0]
-let gatheredFruit = false
+const mapCellCount = parseInt(getComputedStyle(document.querySelector('body')).getPropertyValue('--mapCellCount'))
+document.querySelector(".moveControls .btnUp").addEventListener('click', moveUp);
+document.querySelector(".moveControls .btnDown").addEventListener('click', moveDown);
+document.querySelector(".moveControls .btnLeft").addEventListener('click', moveLeft);
+document.querySelector(".moveControls .btnRight").addEventListener('click', moveRight);
 export const snake = [];
-
+const origMovement = [1, 0];
+let previousMovement = [...origMovement];
+let movement = [0, 0];
+let gatheredFruit = false
 
 window.addEventListener("keydown", updateMovement)
 
@@ -35,28 +34,7 @@ export function updateVariables(){
         previousMovement = movement
         movement = [0, 0]
     }
-    
     gatheredFruit = false
-}
-
-function updateMovement(event){
-    if (movement[0] === 0 && movement[1] === 0){
-        switch (event.key){
-            case "ArrowDown":
-                if (!(previousMovement[1] === -1))     movement[1] = 1;
-                break;
-            case "ArrowUp":
-                if (!(previousMovement[1] === 1))    movement[1] = -1;
-                break;
-            case "ArrowRight":
-                if (!(previousMovement[0] === -1))     movement[0] = 1;
-                break;
-            case "ArrowLeft":
-                if (!(previousMovement[0] === 1))    movement[0] = -1;
-                break;
-            }
-    }
-
 }
 
 function updatePosition(move){
@@ -73,8 +51,6 @@ function updatePosition(move){
 
     snake[0].style.setProperty("--top", 
        (parseInt(getComputedStyle(snake[0]).getPropertyValue("--top")) + move[1] + mapCellCount) % mapCellCount)
-        
-    
 }
 
 export function isGameLost(){
@@ -88,8 +64,6 @@ export function isGameLost(){
     return false
 }
 
-
-
 function createCellObject(){
     let newCell = document.createElement("div");
     newCell.classList.add('snakeCell');             // set class attribute
@@ -101,12 +75,55 @@ function createCellObject(){
 }
 
 export function reset(){
-    previousMovement = [0, 0];
-    movement = [0, 0];
+    previousMovement = [...origMovement];
+    movement = [...origMovement];
     for(let i = 1; i < snake.length; i++){
         snake[i].remove();
     }
     snake.length = 1;
     snake[0].style.setProperty("--left", (0));
     snake[0].style.setProperty("--top", (0));
+}
+
+function updateMovement(event){
+    if (movement[0] === 0 && movement[1] === 0){
+        switch (event.key){
+            case "ArrowDown":
+                if (!(previousMovement[1] === -1))      movement[1] = 1;
+                break;
+            case "ArrowUp":
+                if (!(previousMovement[1] === 1))       movement[1] = -1;
+                break;
+            case "ArrowRight":
+                if (!(previousMovement[0] === -1))      movement[0] = 1;
+                break;
+            case "ArrowLeft":
+                if (!(previousMovement[0] === 1))       movement[0] = -1;
+                break;
+            }
+    }
+}
+
+function moveUp(){
+    if (movement[0] === 0 && movement[1] === 0){
+        movement[1] = -1;
+    }
+}
+
+function moveDown(){
+    if (movement[0] === 0 && movement[1] === 0){
+        movement[1] = 1;
+    }
+}
+
+function moveRight(){
+    if (movement[0] === 0 && movement[1] === 0){
+        movement[0] = 1;
+    }
+}
+
+function moveLeft(){
+    if (movement[0] === 0 && movement[1] === 0){
+        movement[0] = -1;
+    }
 }

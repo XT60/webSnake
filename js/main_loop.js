@@ -2,65 +2,76 @@
 import * as world from "./world.js";        // for the execution ??
 import * as snake from "./snake.js";
 
+const startMessage = document.querySelector(".startMessage");
+const endMessageDiv = document.querySelector(".endMessage");
+const endMessageText = document.querySelector(".endMessage p");
+const endRestartButton = document.querySelector(".endMessage button");
+const origFspValue = 10;
+const maxFpsValue  = 40;
 
-let fps = parseFloat(getComputedStyle(document.querySelector("body")).getPropertyValue("--fps"));
-let fpsIncrementSpeed = 0.02;
-const bodyElement = document.querySelector("body") 
+let fps = 15;
+let fpsIncrementSpeed = 0.03;
 let tickLength = 1/fps * 1000;            // in miliseconds
-const scoreBoard = document.querySelector(".scoreBoard")
 
 let lastTime = 0;
 let delta;
+let inGame = false;
 
+endRestartButton.addEventListener("click", restartGame);
+window.addEventListener("keydown", startGame)
+document.querySelector(".moveControls .btnUp").addEventListener('click', startGame);
+document.querySelector(".moveControls .btnDown").addEventListener('click', startGame);
+document.querySelector(".moveControls .btnLeft").addEventListener('click', startGame);
+document.querySelector(".moveControls .btnRight").addEventListener('click', startGame);
 world.worldSetup()
 snake.snakeSetup()
-window.requestAnimationFrame(updateVariables);
 
 function updateVariables(timeStamp){
     delta = timeStamp - lastTime;           // in miliseconds
     if (delta >= tickLength){
         snake.updateVariables()
         world.updateVariables()
-        updateScore()
         updateTickLength()
         lastTime = timeStamp
     }
     if (snake.isGameLost()) {
-        let score = parseInt(getComputedStyle(bodyElement).getPropertyValue("--score"));
-        if (score < 10){
-            window.alert("Are you joking??? My dog can do better than that... and you know the thing is he has been dead for 2 years now.") 
-        }
-        else{
-            window.alert("You Lost SUCKER !!! You got as little as: "  + 
-                getComputedStyle(bodyElement).getPropertyValue("--score") + "points, hahahha dumb piece of shit !!!");
-        }
-        world.reset()
-        snake.reset()
-        resetScore()
-        resetTickLength()
+        endMessageText.innerHTML = "You lost! Your score was: " + String(world.score);
+        endMessageDiv.style.setProperty("display", "block");
     }
+    else{
+        requestAnimationFrame(updateVariables);
+    }
+}
+
+function startGame(){
+    if (!inGame){
+        window.requestAnimationFrame(updateVariables);
+        resetFps();
+        inGame = true;
+        startMessage.style.setProperty("display", "none");
+    }
+}
+
+function restartGame(){
+    world.reset();
+    snake.reset();
+    world.resetScore();
+    resetFps();
     requestAnimationFrame(updateVariables);
-}
-
-
-function updateScore(){
-    let shownScore = parseInt(scoreBoard.textContent.slice(7));
-    let currScore = parseInt(getComputedStyle(bodyElement).getPropertyValue("--score"));
-    if (shownScore !== currScore){
-        scoreBoard.textContent = scoreBoard.textContent.replace(String(shownScore), String(currScore))
-    }
-}
-
-function resetScore(){
-    bodyElement.style.setProperty("--score", 1);
-    updateScore();
+    endMessageDiv.style.setProperty("display", "none");
 }
 
 function updateTickLength(){
     fps += fpsIncrementSpeed;
-    tickLength = 1/fps * 1000;
+    if (fps > maxFpsValue){
+        fps = maxFpsValue;
+    }
+    else{
+        tickLength = 1/fps * 1000;
+    }
 }
 
-function resetTickLength(){
+function resetFps(){
+    fps = origFspValue;
     tickLength = 1/fps * 1000;
 }
