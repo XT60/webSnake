@@ -105,25 +105,25 @@ function updateMovement(event){
 }
 
 function moveUp(){
-    if (movement[0] === 0 && movement[1] === 0){
+    if (movement[0] === 0 && movement[1] === 0 && previousMovement[1] !== 1){
         movement[1] = -1;
     }
 }
 
 function moveDown(){
-    if (movement[0] === 0 && movement[1] === 0){
+    if (movement[0] === 0 && movement[1] === 0 && previousMovement[1] !== -1){
         movement[1] = 1;
     }
 }
 
 function moveRight(){
-    if (movement[0] === 0 && movement[1] === 0){
+    if (movement[0] === 0 && movement[1] === 0 && previousMovement[0] !== -1){
         movement[0] = 1;
     }
 }
 
 function moveLeft(){
-    if (movement[0] === 0 && movement[1] === 0){
+    if (movement[0] === 0 && movement[1] === 0 && previousMovement[0] !== 1){
         movement[0] = -1;
     }
 }
