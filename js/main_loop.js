@@ -10,7 +10,7 @@ const origFspValue = 10;
 const maxFpsValue  = 40;
 
 let fps = 15;
-let fpsIncrementSpeed = 0.03;
+let fpsIncrementSpeed = 0.02;
 let tickLength = 1/fps * 1000;            // in miliseconds
 
 let lastTime = 0;
