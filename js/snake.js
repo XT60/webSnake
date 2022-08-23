@@ -94,6 +94,7 @@ export function reset(){
     snake.length = 1;
     snake[0].style.setProperty("--left", (0));
     snake[0].style.setProperty("--top", (0));
+    currColor = headColor;
 }
 
 function updateMovement(event){
