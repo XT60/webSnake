@@ -10,6 +10,7 @@ body {
   --mapCellCount: 20;
   --cellSize: calc(100% / var(--mapCellCount));
   --snakeColor: #debf37;
+  --snakeHeadColor: FireBrick; 
   --cellColor: rgb(1, 154, 1);
   font-family: "Roboto", sans-serif;
   background-image: url("../img/snake.jpg");
@@ -98,7 +99,7 @@ img {
   font-family: "Staatliches", cursive;
   font-weight: bold;
   letter-spacing: 3px;
-  font-size: 4vmin;
+  font-size: 3.5vmin;
   }
 
 

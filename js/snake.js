@@ -1,15 +1,24 @@
 'use strict'
+
 const gameBoard = document.querySelector(".gameBoard");
 const mapCellCount = parseInt(getComputedStyle(document.querySelector('body')).getPropertyValue('--mapCellCount'))
 document.querySelector(".moveControls .btnUp").addEventListener('click', moveUp);
 document.querySelector(".moveControls .btnDown").addEventListener('click', moveDown);
 document.querySelector(".moveControls .btnLeft").addEventListener('click', moveLeft);
 document.querySelector(".moveControls .btnRight").addEventListener('click', moveRight);
+//const headColor = getComputedStyle(document.querySelector("body")).getPropertyValue("--snakeHeadColor")
 export const snake = [];
 const origMovement = [1, 0];
 let previousMovement = [...origMovement];
 let movement = [0, 0];
-let gatheredFruit = false
+let gatheredFruit = false;
+const colorPairs = [[[178, 34, 34], [222, 191, 55]]];
+//[[255, 20, 147], [255, 228, 181]], [[255, 165, 0], [189, 183, 107]]
+let headColor, tailColor;
+[headColor, tailColor] = getRandom(colorPairs);
+const expectedLength = 35;
+const colorIntervals = tailColor.map((number, index) => (number - headColor[index]) / expectedLength);
+let currColor = [...headColor];
 
 window.addEventListener("keydown", updateMovement)
 
@@ -66,9 +75,11 @@ export function isGameLost(){
 
 function createCellObject(){
     let newCell = document.createElement("div");
-    newCell.classList.add('snakeCell');             // set class attribute
+    newCell.classList.add('snakeCell');                 // set class attribute
     newCell.style.setProperty("--top", 0);    
-    newCell.style.setProperty("--left", 0);               // initialize properties, position doesn't mattter, will be changed later in iteration
+    newCell.style.setProperty("--left", 0);             // initialize properties, position doesn't mattter, will be changed later in iteration
+    newCell.style.setProperty("background-color", `rgb(${currColor[0]}, ${currColor[1]}, ${currColor[2]})`)
+    currColor.forEach((number, index, currColor) => {currColor[index] = number + colorIntervals[index]});
     gameBoard.append(newCell);
     snake.push(newCell)
     return newCell
@@ -126,4 +137,8 @@ function moveLeft(){
     if (movement[0] === 0 && movement[1] === 0 && previousMovement[0] !== 1){
         movement[0] = -1;
     }
+}
+function getRandom(arr){
+    let i = Math.floor(Math.random() * arr.length);
+    return arr[i];
 }
