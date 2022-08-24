@@ -2,125 +2,200 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-}
-
-body {
+  }
+  
+  body {
 	/* variables */
 	--mapSize: 300px;
 	--mapCellCount: 20;
 	--cellSize: calc(100% / var(--mapCellCount));
 	--snakeColor: #debf37;
+	--snakeHeadColor: FireBrick; 
 	--cellColor: rgb(1, 154, 1);
-	--score: 1;
-	font-family: 'Roboto', sans-serif;
-	background-image: url('../img/snake.jpg');
+	font-family: "Roboto", sans-serif;
+	background-image: url("../img/snake.jpg");
 	background-size: cover;
 	background-position: center;
-}
-
-.world {
+  }
+  
+  .gameContaiter {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .world {
+	/* size dinamically set in world.js */
 	background-image: linear-gradient(315deg, #3b617e 0%, #0d264a 74%);
 	position: relative;
-}
-
-.snakeCell {
+  }
+  
+  .snakeCell {
 	position: absolute;
 	top: calc(var(--top) * var(--cellSize));
 	left: calc(var(--left) * var(--cellSize));
 	background-color: var(--snakeColor);
 	width: var(--cellSize);
 	height: var(--cellSize);
-}
-
-.fruitCell {
+  }
+  
+  .fruitCell {
 	position: absolute;
 	top: calc(var(--top) * var(--cellSize));
 	left: calc(var(--left) * var(--cellSize));
 	background-color: var(--cellColor);
 	width: var(--cellSize);
 	height: var(--cellSize);
-}
-
-.scoreBoard {
+  }
+  
+  
+  img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+  }
+  
+  .scoreBoard {
 	position: absolute;
 	color: white;
-	font-family: 'Staatliches', cursive;
+	font-family: "Staatliches", cursive;
 	font-weight: bold;
 	letter-spacing: 3px;
 	font-size: 4vmin;
 	top: 1vmin;
 	right: 3vmin;
-}
-img {
+  }
+  
+  .startMessage {
 	position: absolute;
-	/* top: calc(-1 * var(--mapBorderWidth));
-    left: calc(-1 * var(--mapBorderWidth)); */
-	width: 100%;
-	height: 100%;
-}
-
-.game-container {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.move-controls {
+	color: white;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	font-family: "Staatliches", cursive;
+	font-weight: bold;
+	letter-spacing: 3px;
+	font-size: 4vmin;
+  }
+  
+  .endMessage {
+	display: none;
+	position: absolute;
+	background-image: linear-gradient(315deg, #0d264a 0%,  #3b617e 160%);
+	text-align: center;
+	color: white;
+	border: 0.4vmin solid white;
+	border-radius: 2px;
+	left: 50%;
+	top: 50%;
+	width: 70vmin;
+	height: 15vmin;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	font-family: "Staatliches", cursive;
+	font-weight: bold;
+	letter-spacing: 3px;
+	font-size: 3.5vmin;
+	}
+  
+  
+  .moveControls {
 	min-height: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 20px;
+  }
+  .moveControls .moveControlsContainer {
+	position: relative;
+	min-width: 300px;
+	min-height: 220px;
+  }
+  .moveControls .fa-solid {
+	font-size: 60px;
+	padding: 4px;
+	color: white;
+	text-shadow: 0 0 10px black;
+  }
+  .moveControls button {
+	background-color: rgb(28, 28, 28);
+	position: relative;
+  }
+  .moveControls .btnUp {
+	left: 50%;
+	transform: translate(-50%);
+	width: 65px;
+  }
+  .moveControls .btnDown {
+	top: 145px;
+	width: 65px;
+	left: -30%;
+  }
+  .moveControls .btnLeft {
+	top: 72px;
+	left: -16px;
+  }
+  .moveControls .btnRight {
+	top: 72px;
+	left: 45px;
+  }
 
-	.move-controls-container {
+  .endText{
+	padding-top: 14px;
+  }
+
+  .endButton{
+	position: relative;
+	text-transform: uppercase;
+	padding: 6px 15px;
+	margin-top: 10px;
+	border: 2px solid white;
+	background-color: rgba(18, 59, 147,0);
+	color: white;
+	font-family: "Staatliches", cursive;
+	letter-spacing: 3px;
+	font-size: 22px;
+	border-radius: 2px;
+	transition: .4s;
+	text-shadow: 0 0 8px black;
+  }
+
+  .endButton::after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 0;
+	width: 100%;
+	color: #debf37;
+	background-image: linear-gradient(315deg, FireBrick 20%, var(--snakeColor) 100%);
+	transition: .4s;
+  }
+
+  .endButton:hover::after{
+	height: 100%;
+  }
+
+  .endButton:hover{
+	cursor: pointer;
+  }
+  .endButton{
+	span{
 		position: relative;
-		min-width: 300px;
-		min-height: 220px;
+		z-index: 10;
 	}
+  }
 
-	.fa-solid {
-		font-size: 60px;
-		padding: 4px;
-		color: white;
-		text-shadow: 0 0 10px black;
+//   media queries
+  
+  @media (min-width: 992px) {
+	.gameContaiter {
+	  padding-top: 20px;
 	}
-
-	button {
-		background-color: rgb(28, 28, 28);
-		position: relative;
+	.moveControls {
+	  display: none;
 	}
-
-	.btn-up {
-		left: 50%;
-		transform: translate(-50%);
-		width: 65px;
-	}
-
-	.btn-left {
-		top: 72px;
-		left: -16px;
-	}
-
-	.btn-right {
-		top: 72px;
-		left: 45px;
-	}
-
-	.btn-down {
-		top: 145px;
-		width: 65px;
-		left: -30%;
-	}
-}
-
-@media (min-width: 992px) {
-	.game-container {
-		padding-top: 20px;
-	}
-
-	.move-controls {
-		display: none;
-	}
-}
+  }/*# sourceMappingURL=style.css.map */

@@ -10,7 +10,7 @@ body {
   --mapCellCount: 20;
   --cellSize: calc(100% / var(--mapCellCount));
   --snakeColor: #debf37;
-  --snakeHeadColor: FireBrick; 
+  --snakeHeadColor: FireBrick;
   --cellColor: rgb(1, 154, 1);
   font-family: "Roboto", sans-serif;
   background-image: url("../img/snake.jpg");
@@ -50,7 +50,6 @@ body {
   height: var(--cellSize);
 }
 
-
 img {
   position: absolute;
   width: 100%;
@@ -84,12 +83,11 @@ img {
 .endMessage {
   display: none;
   position: absolute;
-  background-image: linear-gradient(315deg, #0d264a 0%,  #3b617e 160%);
+  background-image: linear-gradient(315deg, #0d264a 0%, #3b617e 160%);
   text-align: center;
   color: white;
-  border-width: 0.8vmin;
-  border-color: white;
-  border-style: dashed;
+  border: 0.4vmin solid white;
+  border-radius: 2px;
   left: 50%;
   top: 50%;
   width: 70vmin;
@@ -100,8 +98,7 @@ img {
   font-weight: bold;
   letter-spacing: 3px;
   font-size: 3.5vmin;
-  }
-
+}
 
 .moveControls {
   min-height: 200px;
@@ -110,38 +107,90 @@ img {
   align-items: center;
   margin-top: 20px;
 }
+
 .moveControls .moveControlsContainer {
   position: relative;
   min-width: 300px;
   min-height: 220px;
 }
+
 .moveControls .fa-solid {
   font-size: 60px;
   padding: 4px;
   color: white;
   text-shadow: 0 0 10px black;
 }
+
 .moveControls button {
   background-color: rgb(28, 28, 28);
   position: relative;
 }
+
 .moveControls .btnUp {
   left: 50%;
   transform: translate(-50%);
   width: 65px;
 }
+
 .moveControls .btnDown {
   top: 145px;
   width: 65px;
   left: -30%;
 }
+
 .moveControls .btnLeft {
   top: 72px;
   left: -16px;
 }
+
 .moveControls .btnRight {
   top: 72px;
   left: 45px;
+}
+
+.endText {
+  padding-top: 14px;
+}
+
+.endButton {
+  position: relative;
+  text-transform: uppercase;
+  padding: 6px 15px;
+  margin-top: 10px;
+  border: 2px solid white;
+  background-color: rgba(18, 59, 147, 0);
+  color: white;
+  font-family: "Staatliches", cursive;
+  letter-spacing: 3px;
+  font-size: 22px;
+  border-radius: 2px;
+  transition: 0.4s;
+  text-shadow: 0 0 8px black;
+}
+
+.endButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  color: #debf37;
+  background-image: linear-gradient(315deg, FireBrick 20%, var(--snakeColor) 100%);
+  transition: 0.4s;
+}
+
+.endButton:hover::after {
+  height: 100%;
+}
+
+.endButton:hover {
+  cursor: pointer;
+}
+
+.endButton span {
+  position: relative;
+  z-index: 10;
 }
 
 @media (min-width: 992px) {
@@ -151,4 +200,4 @@ img {
   .moveControls {
     display: none;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map *//*# sourceMappingURL=style.css.map */
