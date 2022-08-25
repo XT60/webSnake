@@ -2,89 +2,88 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
 	/* variables */
 	--mapSize: 300px;
 	--mapCellCount: 20;
 	--cellSize: calc(100% / var(--mapCellCount));
 	--snakeColor: #debf37;
-	--snakeHeadColor: FireBrick; 
+	--snakeHeadColor: FireBrick;
 	--cellColor: rgb(1, 154, 1);
-	font-family: "Roboto", sans-serif;
-	background-image: url("../img/snake.jpg");
+	font-family: 'Roboto', sans-serif;
+	background-image: url('../img/snake.jpg');
 	background-size: cover;
 	background-position: center;
-  }
-  
-  .gameContaiter {
+}
+
+.gameContaiter {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  }
-  
-  .world {
+}
+
+.world {
 	/* size dinamically set in world.js */
 	background-image: linear-gradient(315deg, #3b617e 0%, #0d264a 74%);
 	position: relative;
-  }
-  
-  .snakeCell {
+}
+
+.snakeCell {
 	position: absolute;
 	top: calc(var(--top) * var(--cellSize));
 	left: calc(var(--left) * var(--cellSize));
 	background-color: var(--snakeColor);
 	width: var(--cellSize);
 	height: var(--cellSize);
-  }
-  
-  .fruitCell {
+}
+
+.fruitCell {
 	position: absolute;
 	top: calc(var(--top) * var(--cellSize));
 	left: calc(var(--left) * var(--cellSize));
 	background-color: var(--cellColor);
 	width: var(--cellSize);
 	height: var(--cellSize);
-  }
-  
-  
-  img {
+}
+
+img {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-  }
-  
-  .scoreBoard {
+}
+
+.scoreBoard {
 	position: absolute;
 	color: white;
-	font-family: "Staatliches", cursive;
+	font-family: 'Staatliches', cursive;
 	font-weight: bold;
 	letter-spacing: 3px;
 	font-size: 4vmin;
 	top: 1vmin;
 	right: 3vmin;
-  }
-  
-  .startMessage {
+}
+
+.startMessage {
 	position: absolute;
 	color: white;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	white-space: nowrap;
-	font-family: "Staatliches", cursive;
+	font-family: 'Staatliches', cursive;
 	font-weight: bold;
 	letter-spacing: 3px;
 	font-size: 4vmin;
-  }
-  
-  .endMessage {
+}
+
+.endMessage {
 	display: none;
 	position: absolute;
-	background-image: linear-gradient(315deg, #0d264a 0%,  #3b617e 160%);
+	background-image: linear-gradient(315deg, #0d264a 0%, #3b617e 160%);
 	text-align: center;
 	color: white;
 	border: 0.4vmin solid white;
@@ -92,78 +91,77 @@
 	left: 50%;
 	top: 50%;
 	width: 70vmin;
-	height: 15vmin;
+	height: 25vmin;
 	transform: translate(-50%, -50%);
 	white-space: nowrap;
-	font-family: "Staatliches", cursive;
+	font-family: 'Staatliches', cursive;
 	font-weight: bold;
 	letter-spacing: 3px;
 	font-size: 3.5vmin;
-	}
-  
-  
-  .moveControls {
+}
+
+.moveControls {
 	min-height: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 20px;
-  }
-  .moveControls .moveControlsContainer {
+}
+.moveControls .moveControlsContainer {
 	position: relative;
 	min-width: 300px;
 	min-height: 220px;
-  }
-  .moveControls .fa-solid {
+}
+.moveControls .fa-solid {
 	font-size: 60px;
 	padding: 4px;
 	color: white;
 	text-shadow: 0 0 10px black;
-  }
-  .moveControls button {
+}
+.moveControls button {
 	background-color: rgb(28, 28, 28);
 	position: relative;
-  }
-  .moveControls .btnUp {
+}
+.moveControls .btnUp {
 	left: 50%;
 	transform: translate(-50%);
 	width: 65px;
-  }
-  .moveControls .btnDown {
+}
+.moveControls .btnDown {
 	top: 145px;
 	width: 65px;
 	left: -30%;
-  }
-  .moveControls .btnLeft {
+}
+.moveControls .btnLeft {
 	top: 72px;
 	left: -16px;
-  }
-  .moveControls .btnRight {
+}
+.moveControls .btnRight {
 	top: 72px;
 	left: 45px;
-  }
+}
 
-  .endText{
+.endText {
 	padding-top: 14px;
-  }
+}
 
-  .endButton{
+.endButton {
 	position: relative;
 	text-transform: uppercase;
-	padding: 6px 15px;
+	padding: 3px 10px;
 	margin-top: 10px;
 	border: 2px solid white;
-	background-color: rgba(18, 59, 147,0);
+	background-color: rgba(18, 59, 147, 0);
 	color: white;
-	font-family: "Staatliches", cursive;
-	letter-spacing: 3px;
-	font-size: 22px;
+	font-family: 'Staatliches', cursive;
 	border-radius: 2px;
-	transition: .4s;
+	transition: 0.4s;
 	text-shadow: 0 0 8px black;
-  }
+	font-size: 14px;
+	letter-spacing: 2px;
+}
 
-  .endButton::after{
+.endButton::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -171,31 +169,69 @@
 	height: 0;
 	width: 100%;
 	color: #debf37;
-	background-image: linear-gradient(315deg, FireBrick 20%, var(--snakeColor) 100%);
-	transition: .4s;
-  }
+	background-image: linear-gradient(
+		315deg,
+		FireBrick 20%,
+		var(--snakeColor) 100%
+	);
+	transition: 0.4s;
+}
 
-  .endButton:hover::after{
+.endButton:hover::after {
 	height: 100%;
-  }
+}
 
-  .endButton:hover{
+.endButton:hover {
 	cursor: pointer;
-  }
-  .endButton{
-	span{
+}
+.endButton {
+	span {
 		position: relative;
 		z-index: 10;
 	}
-  }
+}
 
 //   media queries
-  
-  @media (min-width: 992px) {
+
+@media (min-width: 350px) {
+	.endButton {
+		font-size: 22px;
+	}
+}
+
+@media (min-width: 450px) {
+	.endButton {
+		margin-top: 20px;
+		font-size: 24px;
+	}
+}
+@media (min-width: 576px) {
+	.endButton {
+		margin-top: 18px;
+		font-size: 34px;
+	}
+
+	.endMessage{
+		height: 20vmin;
+	}
+}
+@media (min-width: 768px) {
+	.endButton {
+		margin-top: 18px;
+		font-size: 40px;
+		padding: 8px 20px;
+	}
+
+	.endMessage{
+		height: 20vmin;
+	}
+}
+
+@media (min-width: 992px) {
 	.gameContaiter {
-	  padding-top: 20px;
+		padding-top: 20px;
 	}
 	.moveControls {
-	  display: none;
+		display: none;
 	}
-  }/*# sourceMappingURL=style.css.map */
+}

@@ -91,7 +91,7 @@ img {
   left: 50%;
   top: 50%;
   width: 70vmin;
-  height: 15vmin;
+  height: 25vmin;
   transform: translate(-50%, -50%);
   white-space: nowrap;
   font-family: "Staatliches", cursive;
@@ -155,17 +155,17 @@ img {
 .endButton {
   position: relative;
   text-transform: uppercase;
-  padding: 6px 15px;
+  padding: 3px 10px;
   margin-top: 10px;
   border: 2px solid white;
   background-color: rgba(18, 59, 147, 0);
   color: white;
   font-family: "Staatliches", cursive;
-  letter-spacing: 3px;
-  font-size: 22px;
   border-radius: 2px;
   transition: 0.4s;
   text-shadow: 0 0 8px black;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
 .endButton::after {
@@ -193,6 +193,36 @@ img {
   z-index: 10;
 }
 
+@media (min-width: 350px) {
+  .endButton {
+    font-size: 22px;
+  }
+}
+@media (min-width: 450px) {
+  .endButton {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+}
+@media (min-width: 576px) {
+  .endButton {
+    margin-top: 18px;
+    font-size: 34px;
+  }
+  .endMessage {
+    height: 20vmin;
+  }
+}
+@media (min-width: 768px) {
+  .endButton {
+    margin-top: 18px;
+    font-size: 40px;
+    padding: 8px 20px;
+  }
+  .endMessage {
+    height: 20vmin;
+  }
+}
 @media (min-width: 992px) {
   .gameContaiter {
     padding-top: 20px;
@@ -200,4 +230,4 @@ img {
   .moveControls {
     display: none;
   }
-} /*# sourceMappingURL=style.css.map *//*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
