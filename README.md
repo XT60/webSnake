@@ -8,19 +8,19 @@ Simple and classic game of snake in web version.
 
 ## 🐍 How to play
 
-<h3> Movement </h3>
+<h3> ➡️ Movement </h3>
 
 On PC or laptop, you can move with arrows on your keyboard. If you play on mobile devices, you will see buttons on your screen and you have to click them to move.
 
-<h3> Score </h3>
+<h3> 🔢 Score </h3>
 
 In the upper right corner, you can see a your actual score.
 
-<h3> Game over </h3>
+<h3> ⏹️ Game over </h3>
 
 If you run into yourself, the game will immediatly end.
 
-<h3> The goal of the game </h3>
+<h3> 📶 The goal of the game </h3>
 
 Your goal is to score as many points as possible! 
 
