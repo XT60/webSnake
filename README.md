@@ -28,10 +28,9 @@ Your goal is to score as many points as possible!
 
  <img src="https://images.weserv.nl/?url=https://github.com/XT60.png?v=4&h=300&w=300&fit=cover&mask=circle&maxage=7d" alt="profileImg" width="30" height="30" align="left">
  <a href="[url](https://github.com/XT60)" align="left">XT60</a>
-
-
-## 
-
+ 
+ <div><p> </p></div>
+ 
  <img src="https://images.weserv.nl/?url=https://github.com/knizinsky.png?v=4&h=300&w=300&fit=cover&mask=circle&maxage=7d" alt="profileImg" width="30" height="30" align="left">
  <a href="[url](https://github.com/knizinsky)" align="left">knizinsky</a>
 
